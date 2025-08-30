@@ -49,14 +49,14 @@ export default function Hero() {
         settings: { slidesToShow: 2 },
       },
       {
-        breakpoint: 640, // mobile
+        breakpoint: 700, // mobile
         settings: { slidesToShow: 1 },
       },
     ],
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between px-12 py-16 bg-gradient-to-r from-pink-100 via-pink-300 to-pink-100">
+    <section className="flex flex-col md:flex-row items-center justify-between px-12 py-16 bg-gradient-to-br from-pink-100 via-pink-300 to-pink-100 pt-28">
       {/* Left content */}
       <div className="md:w-1/2 space-y-6">
         <h2 className="text-4xl md:text-5xl font-bold text-pink-700 leading-tight">

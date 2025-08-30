@@ -16,10 +16,10 @@ export default function Navbar() {
 
 
   return (
-    <nav className={` flex justify-around items-center text-gray-700  glass-navbar rounded-full `}>
+    <nav className={` flex justify-around items-center text-gray-700  glass-navbar rounded-full p-0`}>
 
       <div className="w-[50px]">
-        <Image src={"/logo.png"} alt="logo" width={70} height={70}/>
+        <Image src={"/logo.png"} alt="logo" width={50} height={50}/>
       </div>
 
 

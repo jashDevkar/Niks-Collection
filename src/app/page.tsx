@@ -50,7 +50,7 @@ const categories = [
 
 export default function Home() {
   return (
-    <main className=" bg-pink-100 text-gray-900">
+    <main className=" bg-pink-300 text-gray-900">
 
 
       {/* Navbar */}
