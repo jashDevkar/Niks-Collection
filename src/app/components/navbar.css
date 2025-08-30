@@ -1,0 +1,39 @@
+.nav-link {
+  position: relative;
+  padding-bottom: 2px; /* some spacing for underline */
+
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  border-radius: 9999px; /* fully rounded */
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+
+.glass-navbar {
+ position: sticky;
+ top: 5px;
+ margin: 0px 20px 0px 20px;
+  z-index: 50;
+
+  background: rgba(245, 3, 44, 0.332); /* transparent white */
+  backdrop-filter: blur(12px);           /* frosted blur */
+  -webkit-backdrop-filter: blur(12px);   /* Safari support */
+
+                 /* smooth rounded look */
+  
+  padding: 12px 20px;
+  /* subtle floating shadow */
+}
