@@ -28,7 +28,7 @@
  margin: 0px 20px 0px 20px;
   z-index: 50;
 
-  background: rgba(245, 3, 44, 0.332); /* transparent white */
+  background: rgba(243, 8, 180, 0.5); /* transparent white */
   backdrop-filter: blur(12px);           /* frosted blur */
   -webkit-backdrop-filter: blur(12px);   /* Safari support */
 
