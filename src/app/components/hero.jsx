@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // custom arrows
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./navbar.css"
 
 
 function NextArrow(props) {
@@ -34,29 +35,30 @@ function PrevArrow(props) {
 
 export default function Hero() {
   var settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024, // tablet
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 700, // mobile
-        settings: { slidesToShow: 1 },
-      },
-    ],
-  };
+  dots: true,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 2, // default desktop
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2500,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 2 },
+    },
+    {
+      breakpoint: 400,
+      settings: { slidesToShow: 1 }, // should force 1
+    },
+  ],
+};
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between px-12 py-16 bg-gradient-to-br from-pink-100 via-pink-300 to-pink-100 pt-28">
+    <section className="flex flex-col md:flex-row md:items-center justify-between px-12 w-full
+      bg-gradient-to-br from-pink-100 via-pink-300 to-pink-100 pt-28 pb-16">
       {/* Left content */}
       <div className="md:w-1/2 space-y-6">
         <h2 className="text-4xl md:text-5xl font-bold text-pink-700 leading-tight">
@@ -71,20 +73,22 @@ export default function Hero() {
       </div>
 
       {/* Carousel */}
-      <div className="md:w-1/2 w-full mt-10 md:mt-0 relative">
+      <div className="md:w-1/2 w-full mt-10 md:mt-0 ">
         <Slider {...settings}>
           {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="p-3">
-              <div className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 bg-white">
+            
+              <div className="p-3" key={index}>
+                <div className="overflow-hidden rounded-lg   transition duration-300 transform hover:scale-105 bg-transparent  ">
                 <Image
                   src={`/${index + 1}.png`}
                   alt={`Jewelry ${index + 1}`}
                   width={600}
                   height={400}
-                  className="w-full h-[350px] object-cover"
+                  className="w-full h-[350px] object-cover rounded-2xl"
                 />
               </div>
-            </div>
+              </div>
+            
           ))}
         </Slider>
       </div>

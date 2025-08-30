@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <nav className={` flex justify-around items-center text-gray-700  glass-navbar rounded-full p-0`}>
 
-      <div className="w-[50px]">
+      <div className="md:w-[50px] w-[30px] md:h-[50px] h-[30px]">
         <Image src={"/logo.png"} alt="logo" width={50} height={50}/>
       </div>
 

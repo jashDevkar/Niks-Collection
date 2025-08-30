@@ -1,6 +1,7 @@
 .nav-link {
   position: relative;
-  padding-bottom: 2px; /* some spacing for underline */
+  padding-bottom: 2px;
+  /* some spacing for underline */
 
 }
 
@@ -12,7 +13,8 @@
   height: 2px;
   width: 0;
   background-color: white;
-  border-radius: 9999px; /* fully rounded */
+  border-radius: 9999px;
+  /* fully rounded */
   transition: width 0.3s ease-in-out;
 }
 
@@ -21,21 +23,29 @@
 }
 
 
+.slick-slide > div {
+  width: 100% !important;
+}
 
 .glass-navbar {
- position: fixed;
- width: 90vw;
- top: 10px;
-left: 50%;            /* move to horizontal center */
-  transform: translateX(-50%); /* shift back by half width */
-  z-index: 1000; 
+  position: fixed;
+  width: 90vw;
+  top: 10px;
+  left: 50%;
+  /* move to horizontal center */
+  transform: translateX(-50%);
+  /* shift back by half width */
+  z-index: 1000;
 
-  background: rgba(238, 44, 186, 0.5); /* transparent white */
-  backdrop-filter: blur(12px);           /* frosted blur */
-  -webkit-backdrop-filter: blur(12px);   /* Safari support */
+  background: rgba(238, 44, 186, 0.5);
+  /* transparent white */
+  backdrop-filter: blur(12px);
+  /* frosted blur */
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
 
-                 /* smooth rounded look */
-  
+  /* smooth rounded look */
+
   padding: 12px 20px;
   /* subtle floating shadow */
 }
