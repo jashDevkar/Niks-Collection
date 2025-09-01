@@ -1,10 +1,11 @@
 "use client"
 
-import { ShoppingCart, User } from "lucide-react";
+import { Heart, Search, ShoppingCart, User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import './navbar.css'
 import { Menu } from 'lucide-react';
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 
 
@@ -12,43 +13,81 @@ import Image from "next/image";
 
 export default function Navbar() {
 
+  const [isSearching, setIsSearching] = useState(false);
+
+  const links = [
+
+    {
+      name: "Categories",
+      link: "#"
+    },
+
+    {
+      name: "Rakhis",
+      link: "#"
+    },
+
+
+    {
+      name: "Baby rakhis",
+      link: "#"
+    },
+
+    {
+      name: "Broch",
+      link: "#"
+    }
+
+
+  ]
 
 
 
   return (
-    <nav className={` flex justify-around items-center text-gray-700  glass-navbar rounded-full p-0`}>
+    <nav className={`flex sticky top-0 justify-around items-center p-2`}>
 
-      <div className="md:w-[50px] w-[30px] md:h-[50px] h-[30px]">
-        <Image src={"/logo.png"} alt="logo" width={50} height={50}/>
+      <div className="">
+        <Image src="/logo.png" alt="logo" width={50} height={50} />
       </div>
 
 
-      <ul className={`space-x-3  hidden md:flex `}>
-        <li>
-          <a href="#" className={`nav-link`}>Categories</a>
-        </li>
+      <ul className={`space-x-4  hidden md:flex  `}>
 
-        <li className="nav-link">
-          <a href="#">Bracelets</a>
-        </li>
+        {
+          links.map((item, index) => (
 
-        <li className="nav-link">
-          <a href="#">Kids rakhis</a>
-        </li>
+            <li key={index}
+              className="font-medium nav-link after:bg-pink-600"
+            ><a href={item.link}>{item.name}</a></li>
 
-        <li className="nav-link">
-          <a href="#">Customised dupatta</a>
-        </li>
+          ))
+        }
 
       </ul>
 
 
 
 
-      <div className="flex space-x-[20px]">
+      <div className="flex gap-[15px] items-center">
 
-        <User />
-        <ShoppingCart />
+        <div className="hover:bg-pink-600 hover:text-white hover:rounded-xl p-2 cursor-pointer hidden md:block">
+          <Search className="w-5 h-5" onClick={() => setIsSearching(prev => !prev)} />
+        </div>
+
+        <div className="hover:bg-pink-600 hover:text-white hover:rounded-xl p-2 cursor-pointer">
+          <Heart className="w-5 h-5" />
+        </div>
+
+
+
+
+        <div className="hover:bg-pink-600 hover:text-white hover:rounded-xl p-2 cursor-pointer">
+          <User className="w-5 h-5" />
+        </div>
+
+
+
+
 
         <div className="md:hidden">
           <Menu />
