@@ -18,6 +18,10 @@ export default function Navbar() {
   const links = [
 
     {
+      name:"Home",
+      link:"#"
+    },
+    {
       name: "Categories",
       link: "#"
     },
@@ -44,7 +48,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className={`flex sticky top-0 justify-around items-center p-2 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm`}>
+    <nav className={`flex fixed left-0 right-0 justify-around items-center p-2 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm`}>
 
       <div className="">
         <Image src="/logo.png" alt="logo" width={50} height={50} />

@@ -61,7 +61,7 @@ export default function Hero() {
      
       <motion.div
 
-        className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 text-center text-white px-6">
+        className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-center text-white px-6">
         <motion.div
         className="flex flex-col items-center"
           initial={{ scale: 0, opacity: 0 }}
@@ -72,13 +72,13 @@ export default function Hero() {
         >
           <h1
 
-            className="text-4xl md:text-6xl font-bold mb-4">
+            className="text-4xl md:text-8xl font-bold mb-4">
             Discover new style
           </h1>
           <motion.p
 
-            className="max-w-2xl mb-6 text-lg md:text-xl">
-            Elegant earrings, bracelets, decor collections, and festive rakhis crafted with love by hands for your hands.
+            className="max-w-2xl mb-6 text-xl md:text-xl">
+            Elegant  bracelets,brooches ,decor collections, and festive rakhis crafted with love by hands for your hands.
           </motion.p>
           <button className="w-fit px-6 py-3 flex items-center gap-2 bg-pink-600 hover:bg-pink-700 transition font-semibold text-lg rounded-full">
             Explore now <MoveRightIcon />
