@@ -44,8 +44,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-screen overflow-hidden">
-      {/* Slider */}
+    <section className="relative h-screen overflow-hidden">
+      
       <Slider {...settings} className="h-screen w-screen">
         {Array.from({ length: 4 }).map((_, index) => (
           <div key={index} className="h-screen w-screen">
@@ -58,7 +58,7 @@ export default function Hero() {
         ))}
       </Slider>
 
-      {/* Overlay content */}
+     
       <motion.div
 
         className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 text-center text-white px-6">
