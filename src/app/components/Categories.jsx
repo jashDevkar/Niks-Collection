@@ -30,14 +30,14 @@ function Categories() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:px-24 px-0">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
+            viewport={{ once: true }}
           >
 
             <CategoryCard cat={cat} />

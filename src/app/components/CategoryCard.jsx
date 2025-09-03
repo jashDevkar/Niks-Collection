@@ -16,12 +16,12 @@ function CategoryCard({ cat }) {
 
             <div className="flex flex-col flex-1 px-2 text-left space-y-2 mt-2">
                 <div className="flex justify-between">
-                    <h1 className="font-semibold">{cat.name}</h1>
+                    <h1 className="font-semibold text-xl">{cat.name}</h1>
                     <div>item count</div>
                 </div>
 
           
-                <p className="flex-1 text-gray-600">{cat.description}</p>
+                <p className="flex-1 text-gray-700 my-2">{cat.description}</p>
 
 
                 <div className="flex justify-center mt-2">

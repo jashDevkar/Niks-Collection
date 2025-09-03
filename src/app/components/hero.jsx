@@ -67,7 +67,7 @@ export default function Hero() {
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
 
         >
           <h1

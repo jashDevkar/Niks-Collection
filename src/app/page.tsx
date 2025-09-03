@@ -20,10 +20,7 @@ const products = [
 export default function Home() {
   return (
     <main className="bg-white text-gray-900 ">
-      {/* Navbar */}
-      <Navbaar />
-
-      {/* Hero */}
+       {/* Hero */}
       <Hero />
 
       <div >
