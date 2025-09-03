@@ -9,12 +9,38 @@ import CategoryCard from './CategoryCard.jsx'
 function Categories() {
 
   const categories = [
-    { id: 1, name: "Bracelets", image: "/bracelet.png", description: "Handcrafted bracelets in gold, silver, and rose gold. Perfect for everyday wear or special occasions." },
-    { id: 2, name: "Baby Shower", image: "/babyshower.png" },
-    { id: 3, name: "Dupatta", image: "/dupatta.jpg" },
-    { id: 4, name: "Rakhis", image: "/rakhi.png" ,description:"Beautiful rakhis crafted with care for Raksha Bandhan. Traditional designs with modern appeal." },
-    { id: 5, name: "Baby Rakhis", image: "/babyrakhi.png" },
-  ];
+  { 
+    id: 1, 
+    name: "Bracelets", 
+    image: "/bracelet.png", 
+    description: "Handcrafted bracelets in gold, silver, and rose gold. Perfect for everyday wear or special occasions." 
+  },
+  { 
+    id: 2, 
+    name: "Baby Shower", 
+    image: "/babyshower.png",
+    description: "Delicate jewelry and accessories designed for celebrating new life. Soft pastels and gentle designs." 
+  },
+  { 
+    id: 3, 
+    name: "Brooch", 
+    image: "/brooch.png",
+    description: "Elegant brooches crafted with intricate designs to add a touch of charm and sophistication to any outfit." 
+  },
+  { 
+    id: 4, 
+    name: "Rakhis", 
+    image: "/rakhi.png",
+    description: "Beautiful rakhis crafted with care for Raksha Bandhan. Traditional designs with modern appeal." 
+  },
+  { 
+    id: 5, 
+    name: "Baby Rakhis", 
+    image: "/babyrakhi.png",
+    description: "Adorable rakhis designed specifically for little ones. Safe, soft, and incredibly cute." 
+  },
+];
+
 
   return (
     <section className="px-12">
@@ -23,14 +49,14 @@ function Categories() {
         <h3 className="text-5xl font-bold  text-pink-600 mb-4 ">
           Our Collections
         </h3>
-        <div className="flex items-center justify-center">
-          <p className="text-gray-700 font-semibold text-xl tracking-wide md:w-1/2 p-0">
+        <div className="flex items-center justify-center mb-20">
+          <p className="text-gray-600  text-xl tracking-wide md:w-1/2 p-0">
             Discover our carefully curated collections of jewelry and accessories, each piece telling its own unique story.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:px-24 px-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:px-24 px-0">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.id}

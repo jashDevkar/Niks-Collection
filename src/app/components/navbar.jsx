@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex fixed left-0 right-0 justify-between md:justify-around items-center p-4 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <nav className="flex fixed left-0 right-0 justify-between md:justify-around items-center p-4 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
       {/* Logo */}
       <h1 className="text-2xl bg-gradient-to-br from-pink-700 to-pink-500 bg-clip-text text-transparent font-semibold">
         Niks Collections
@@ -45,7 +45,7 @@ export default function Navbar() {
         {links.map((item, index) => (
           <li
             key={index}
-            className={`font-medium ${pathName === item.link ? "text-pink-600" : "text-gray-900"
+            className={`font-medium ${pathName === item.link ? "text-pink-600" : "text-gray-700"
               } font-semibold tracking-wide nav-link after:bg-pink-600`}
           >
             <a href={item.link}>{item.name}</a>
@@ -74,7 +74,7 @@ export default function Navbar() {
             className="relative hidden md:block"
             onClick={() => setShowDropdown((prev) => !prev)}
           >
-            <div className="flex items-center gap-2 cursor-pointer p-2 hover:bg-pink-600 hover:text-white rounded-xl">
+            <div className={`flex items-center gap-2 cursor-pointer  p-2 ${showDropdown? "bg-pink-600 text-white hover:text-white":null} hover:text-pink-600  rounded-xl`}>
               <User className="w-5 h-5" />
             </div>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
           </div>
         ) : (
           <Button
-            className="bg-pink-600 text-white rounded-xl p-4 hidden md:block"
+            className="bg-pink-600 text-white rounded-xl  hidden md:block"
             onClick={() => router.push("/login")}
           >
             Login

@@ -4,7 +4,7 @@ import React from 'react'
 
 function CategoryCard({ cat }) {
     return (
-        <div className="flex flex-col h-full group rounded-xl border border-gray-200 overflow-hidden shadow-sm cursor-pointer hover:-translate-y-2 transition-all duration-300 pb-4">
+        <div className="flex flex-col h-full group rounded-xl border border-gray-200 overflow-hidden shadow-sm cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300 pb-4">
 
             <div className="h-64 overflow-hidden relative">
                 <img

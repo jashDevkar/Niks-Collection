@@ -18,7 +18,7 @@ export async function loginController(req, res) {
 
     const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
 
-    console.log(rows);
+    
     if (rows.length === 0) {
       return res.status(404).json({ message: "User not found" });
     }

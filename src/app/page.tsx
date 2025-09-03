@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Navbaar from "./components/navbar";
 import Hero from "./components/hero.jsx";
 import Categories from "./components/Categories.jsx";
+import { Bounce, ToastContainer } from 'react-toastify';
 
 const products = [
   { id: 1, name: "Elegant Earrings", image: "/earrings.jpg", price: "₹1,499" },
@@ -20,6 +21,7 @@ const products = [
 export default function Home() {
   return (
     <main className="bg-white text-gray-900 ">
+       
        {/* Hero */}
       <Hero />
 

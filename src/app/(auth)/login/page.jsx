@@ -6,6 +6,7 @@ import { url } from '../../../constants.js'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../../store/authSlice.js";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
 
 
 
@@ -29,19 +30,28 @@ export default function LoginPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email
-            ,password
+            , password
           })
         })
 
-        
 
-        const responseBody  = await response.json();
-        console.log(response.ok)
-        if(response.ok){
-          dispatch(login({email,token:responseBody.token}));
+
+        const responseBody = await response.json();
+
+        if (response.ok) {
+          dispatch(login({ email, token: responseBody.token }));
           router.push("/");
-        }else{
-          alert(responseBody.message)
+        } else {
+          toast.error(responseBody.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Bounce,
+          });
         }
 
 
@@ -63,6 +73,19 @@ export default function LoginPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+       <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
 
         {/* Brand */}
@@ -73,7 +96,7 @@ export default function LoginPage() {
           Welcome back! Please log in to continue.
         </p>
 
-        {/* Login Form */}
+
         <form className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
