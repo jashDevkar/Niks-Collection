@@ -57,13 +57,11 @@ const authSlice = createSlice({
       state.loading = false;
 
 
+    },
 
 
-
-
-
-
-
+    clearLocalStorage:(state)=>{
+      localStorage.clear();
     }
 
 
@@ -78,7 +76,7 @@ const authSlice = createSlice({
 
 
 
-export const { login, logout, loadFromStorage } = authSlice.actions;
+export const { login, logout, loadFromStorage,clearLocalStorage } = authSlice.actions;
 
 
 export default authSlice.reducer;

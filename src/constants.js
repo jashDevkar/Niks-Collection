@@ -1,3 +1,3 @@
-export const url = "http://localhost:8000"
+export const url = "https://niks-collection-server.onrender.com"
 
 

@@ -34,14 +34,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex fixed left-0 right-0 justify-between md:justify-around items-center p-4 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <nav className="flex fixed left-0 right-0 justify-around  items-center py-4 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-lg">
       {/* Logo */}
-      <h1 className="text-2xl bg-gradient-to-br from-pink-700 to-pink-500 bg-clip-text text-transparent font-semibold">
+      <h1 className="text-xl bg-gradient-to-br from-pink-700 to-pink-500 bg-clip-text text-transparent font-semibold">
         Niks Collections
       </h1>
 
       {/* Desktop Links */}
-      <ul className="gap-x-4 hidden md:flex">
+      <ul className="gap-4 hidden md:flex">
         {links.map((item, index) => (
           <li
             key={index}
@@ -79,7 +79,7 @@ export default function Navbar() {
             </div>
 
             {showDropdown && (
-              <div className="absolute right-0 mt-2 w-48 bg-white shadow-md rounded-lg  p-2 z-50">
+              <div className="absolute right-0 mt-2 w-fit bg-white shadow-md rounded-lg  p-2 z-50">
                 <p className="px-3 py-2 text-sm text-gray-700 border-b">{user}</p>
                 <button
                   onClick={handleLogout}

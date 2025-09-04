@@ -19,12 +19,33 @@ export default function LoginPage() {
 
 
 
+  function isValid(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }
+
+
 
 
   const handleLogin = async () => {
     try {
 
       if (email && password) {
+
+
+        if(!isValid(email)){
+          toast.error('In valid email', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Bounce,
+          });
+          return;
+        }
         const response = await fetch(`${url}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -73,7 +94,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
-       <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -103,6 +124,7 @@ export default function LoginPage() {
               Email Address
             </label>
             <input
+            autoComplete="email"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="you@example.com"

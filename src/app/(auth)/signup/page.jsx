@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { login, setToken } from "../../../../store/authSlice.js"
+import { Bounce, ToastContainer,toast } from "react-toastify";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -15,16 +16,53 @@ export default function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
+
+
+
+    function isValid(email) {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+    }
+
+
     const handleSignup = async () => {
 
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
+        if (!email || !password || password !== confirmPassword) {
+            toast.error('All fields are required', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+                transition: Bounce,
+            });
             return;
         }
 
         try {
+
+
             setLoading(true);
+
+            if (!isValid(email)) {
+                toast.error('In valid email', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "light",
+                    transition: Bounce,
+                });
+
+                return;
+            }
+
+
             const res = await fetch("http://localhost:8000/signup", {
                 method: "POST",
                 headers: {
@@ -36,13 +74,13 @@ export default function SignupPage() {
             const data = await res.json();
 
             if (res.ok) {
-                
-                dispatch(login({ email,token:data.token }));
-            
+
+                dispatch(login({ email, token: data.token }));
+
                 router.replace("/");
 
-             
-                
+
+
 
 
             } else {
@@ -64,6 +102,20 @@ export default function SignupPage() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
             <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 mt-20">
                 {/* Brand */}
                 <h1 className="text-center font-semibold text-2xl">Signup</h1>
