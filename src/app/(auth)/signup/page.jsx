@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { login, setToken } from "../../../../store/authSlice.js"
 import { Bounce, ToastContainer,toast } from "react-toastify";
 import { url } from "../../../constants.js";
+import Spinner from "@/app/components/Spinner.jsx";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -169,9 +170,9 @@ export default function SignupPage() {
                         type="button"
                         onClick={() => handleSignup()}
                         disabled={loading}
-                        className="w-full bg-pink-600 hover:bg-pink-700 rounded-full text-white font-medium py-2 mt-2 shadow-sm transition"
+                        className="w-full bg-pink-600 hover:bg-pink-700 rounded-full text-white font-medium py-2 mt-2 shadow-sm transition flex justify-center items-center"
                     >
-                        {loading ? "Signing up..." : "Sign Up"}
+                        {loading ? <Spinner size="w-6 h-6" color="white" /> : "Sign Up"}
                     </button>
                 </form>
 

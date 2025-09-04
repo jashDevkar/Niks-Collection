@@ -7,7 +7,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../../store/authSlice.js";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import { ScaleLoader } from "react-spinners";
+import { Loader } from 'rsuite';
+import Spinner from '../../components/Spinner.jsx'
 
 export default function LoginPage() {
   const router = useRouter();
@@ -84,20 +85,20 @@ export default function LoginPage() {
 
       }
       else {
-        
+
       }
 
 
     } catch (err) {
 
     }
-    finally{
+    finally {
       setLoading(false);
     }
   };
 
   const handleGoogleLogin = () => {
-    // Handle Google login logic here
+
     console.log("Google login clicked");
   };
 
@@ -118,7 +119,7 @@ export default function LoginPage() {
       />
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
 
-        {/* Brand */}
+
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
           Niks Collection
         </h1>
@@ -156,14 +157,14 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={handleLogin}
-            className="w-full bg-pink-600 hover:bg-pink-700 rounded-full text-white font-medium py-2 mt-2  shadow-sm transition"
+            className="w-full bg-pink-600 hover:bg-pink-700 rounded-full text-white font-medium py-2 mt-2  shadow-sm transition items-center flex justify-center"
           >
             {
               loading ?
-              <div className="text-sm"> 
-                <ScaleLoader size={5} color="#ffffff" />
-              </div>:
-                <p>Login</p> 
+                <Spinner size="w-6 h-6" color="white" />
+
+                :
+                <p>Login</p>
             }
           </button>
         </form>
@@ -171,14 +172,13 @@ export default function LoginPage() {
 
 
 
-        {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-grow h-px bg-gray-200"></div>
           <span className="px-3 text-sm text-gray-500">or</span>
           <div className="flex-grow h-px bg-gray-200"></div>
         </div>
 
-        {/* Google Sign-In */}
+
         <button
           onClick={handleGoogleLogin}
           className="w-full flex items-center justify-center border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
@@ -187,7 +187,7 @@ export default function LoginPage() {
           <span className="text-gray-700 font-medium">Continue with Google</span>
         </button>
 
-        {/* Signup Link */}
+
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{" "}
           <a onClick={() => {

@@ -28,6 +28,7 @@
     "react-slick": "^0.31.0",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
+    "rsuite": "^5.83.3",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^3.3.1"
   },
