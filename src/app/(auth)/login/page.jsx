@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../../store/authSlice.js";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { ScaleLoader } from "react-spinners";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -30,10 +32,10 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
 
-      if (email && password) {
+      if (email && password && !loading) {
 
 
-        if(!isValid(email)){
+        if (!isValid(email)) {
           toast.error('In valid email', {
             position: "top-right",
             autoClose: 5000,
@@ -46,6 +48,8 @@ export default function LoginPage() {
           });
           return;
         }
+
+        setLoading(true);
         const response = await fetch(`${url}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -75,15 +79,20 @@ export default function LoginPage() {
           });
         }
 
+        setLoading(false);
+
 
       }
       else {
-
+        
       }
 
 
     } catch (err) {
 
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -124,7 +133,7 @@ export default function LoginPage() {
               Email Address
             </label>
             <input
-            autoComplete="email"
+              autoComplete="email"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="you@example.com"
@@ -149,7 +158,13 @@ export default function LoginPage() {
             onClick={handleLogin}
             className="w-full bg-pink-600 hover:bg-pink-700 rounded-full text-white font-medium py-2 mt-2  shadow-sm transition"
           >
-            Login
+            {
+              loading ?
+              <div className="text-sm"> 
+                <ScaleLoader size={5} color="#ffffff" />
+              </div>:
+                <p>Login</p> 
+            }
           </button>
         </form>
 

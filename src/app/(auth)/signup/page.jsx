@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { login, setToken } from "../../../../store/authSlice.js"
 import { Bounce, ToastContainer,toast } from "react-toastify";
+import { url } from "../../../constants.js";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -63,7 +64,7 @@ export default function SignupPage() {
             }
 
 
-            const res = await fetch("http://localhost:8000/signup", {
+            const res = await fetch(`${url}/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
