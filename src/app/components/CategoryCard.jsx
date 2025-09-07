@@ -1,15 +1,26 @@
+"use client"
+
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-import React from 'react'
+import Image from 'next/image'
+import React, { useState } from 'react'
 
 function CategoryCard({ cat }) {
+
+
+    const [loading,setLoading] = useState(true);
+
+
     return (
         <div className="flex flex-col h-full group rounded-xl border border-gray-200 overflow-hidden shadow-sm cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300 pb-4">
 
             <div className="h-64 overflow-hidden relative">
-                <img
+                <Image
                     src={cat.image}
                     alt={cat.name}
+                    width={300}
+                    onLoadingComplete={()=>setLoading(false)}
+                    height={300}
                     className="h-full w-full object-cover group-hover:scale-110 duration-300 transition-all"
                 />
             </div>
