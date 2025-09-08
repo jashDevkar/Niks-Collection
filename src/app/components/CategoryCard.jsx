@@ -19,7 +19,7 @@ function CategoryCard({ cat }) {
                     src={cat.image}
                     alt={cat.name}
                     width={300}
-                    onLoadingComplete={()=>setLoading(false)}
+                    onLoad={()=>setLoading(false)}
                     height={300}
                     className="h-full w-full object-cover group-hover:scale-110 duration-300 transition-all"
                 />
