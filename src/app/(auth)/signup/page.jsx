@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login } from "../../../../store/authSlice.js";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { url } from "../../../constants.js";
 import Spinner from "@/app/components/Spinner.jsx";
@@ -83,6 +82,8 @@ export default function SignupPage() {
             });
 
             const data = await res.json();
+
+            
 
             if (res.ok) {
                 toast.success("We've sent an OTP to your email.", { transition: Bounce });

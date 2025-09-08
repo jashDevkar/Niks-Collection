@@ -6,6 +6,11 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 import { url } from "../../../constants.js";
 import Spinner from "@/app/components/Spinner.jsx";
 import OtpInput from 'react-otp-input';
+import { useDispatch } from "react-redux";
+import { login } from "../../../../store/authSlice.js";
+
+
+
 
 export default function OtpVerificationPage() {
     const router = useRouter();
@@ -14,9 +19,46 @@ export default function OtpVerificationPage() {
 
     const [otp, setOtp] = useState("");
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
 
     const [resendCooldown, setResendCooldown] = useState(0);
     const [resendDelay, setResendDelay] = useState(60);
+
+
+
+    async function getUserData() {
+        try {
+
+            setLoading(true);
+            const response = await fetch(`${url}/getTokenAndUserData`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({userId})
+            })
+
+
+
+            const responseBody = await response.json();
+           
+            if (response.ok) {
+                dispatch(login({ user: responseBody.user, token: responseBody.token }));
+                router.replace("/");
+            }
+            else {
+                toast.error(responseBody.message || "Something went wrong", {
+                    transition: Bounce,
+                });
+            }
+
+        } catch (err) {
+            toast.error(err || "Failed to resend OTP", {
+                transition: Bounce,
+            });
+        }
+        finally{
+            setLoading(false);
+        }
+    }
 
 
     useEffect(() => {
@@ -47,7 +89,8 @@ export default function OtpVerificationPage() {
 
             if (res.ok) {
                 toast.success("OTP Verified Successfully 🎉", { transition: Bounce });
-                router.replace("/");
+                getUserData();
+
             } else {
                 toast.error(data.message || "Invalid OTP", { transition: Bounce });
             }
@@ -74,9 +117,9 @@ export default function OtpVerificationPage() {
                 toast.success("OTP resent successfully 📩", { transition: Bounce });
 
                 // Start cooldown timer
-                // setResendCooldown(resendDelay);
+                setResendCooldown(resendDelay);
                 // Increase delay for next time
-                // setResendDelay((prev) => prev + 60);
+                setResendDelay((prev) => prev + 60);
             } else {
                 toast.error(data.message || "Failed to resend OTP", {
                     transition: Bounce,

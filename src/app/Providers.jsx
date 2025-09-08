@@ -20,6 +20,11 @@ function LoadUser() {
 
         const parsed = await JSON.parse(jsonData);
 
+
+        const user = parsed.user;
+
+       
+
         const response = await fetch(`${url}/verify-user`, {
           headers: {
             "Content-Type": "application/json",

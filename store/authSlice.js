@@ -7,7 +7,6 @@ const initialState = {
   user: null,
   token: null,
   loading:true,
-
 }
 
 
@@ -20,10 +19,8 @@ const authSlice = createSlice({
     login: (state, action) => {
       state.isAuthenticated = true;
       state.token = action.payload.token;
-      state.user = action.payload.email;
+      state.user = action.payload.user;
       state.loading = false;
-
-
 
       localStorage.setItem("auth", JSON.stringify(action.payload));
     },
@@ -50,7 +47,7 @@ const authSlice = createSlice({
 
       if (userData) {
         state.isAuthenticated = true;
-        state.user = userData.email;
+        state.user = userData.user;
         state.token = userData.token;
       }
       

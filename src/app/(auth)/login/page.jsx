@@ -64,9 +64,31 @@ export default function LoginPage() {
 
         const responseBody = await response.json();
 
+        if (response.status == 300) {
+
+          const userId = responseBody.user.id;
+
+          setLoading(true);
+
+          const res = await fetch(`${url}/resend-otp`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId })
+          });
+
+          if (res.ok) {
+            toast.success(responseBody.message, { transition: Bounce, });
+            router.push(`/verify-user/?userId=${userId}`);
+          }
+
+        }
+
         if (response.ok) {
-          dispatch(login({ email, token: responseBody.token }));
+
+          toast.success(responseBody.message, { transition: Bounce, });
+          dispatch(login({ user:responseBody.user, token: responseBody.token }));
           router.push("/");
+
         } else {
           toast.error(responseBody.message, {
             position: "top-right",
@@ -85,12 +107,12 @@ export default function LoginPage() {
 
       }
       else {
-
+        toast.success("try again later...", { transition: Bounce, });
       }
 
 
     } catch (err) {
-
+      toast.error(err, { transition: Bounce, });
     }
     finally {
       setLoading(false);

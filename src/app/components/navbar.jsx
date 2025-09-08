@@ -21,6 +21,9 @@ export default function Navbar() {
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
 
+
+
+
   const links = [
     { name: "Home", link: "/" },
     { name: "Rakhis", link: "#" },
@@ -80,7 +83,7 @@ export default function Navbar() {
 
             {showDropdown && (
               <div className="absolute right-0 mt-2 w-fit bg-white shadow-md rounded-lg  p-2 z-50">
-                <p className="px-3 py-2 text-sm text-gray-700 border-b">{user}</p>
+                <p className="px-3 py-2 text-sm text-gray-700 border-b">{user.email}</p>
                 <button
                   onClick={handleLogout}
                   className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-gray-100 rounded-lg"
@@ -134,7 +137,7 @@ export default function Navbar() {
           ) : isAuthenticated ? (
             <li className="w-full  ">
               <div className="bg-transparent p-3 rounded-lg  flex flex-col items-center border-t-1 border-gray-500 mx-10">
-                <p className="text-sm font-medium text-gray-700 mb-2">{user}</p>
+                <p className="text-sm font-medium text-gray-700 mb-2">{user.email}</p>
                 <button
                   onClick={() => {
                     handleLogout();
